@@ -1,0 +1,283 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "graphTooltip": 0,
+  "id": 3,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "infinitePan": false,
+        "inlineEditing": false,
+        "panZoom": false
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "measurement": "sensor_data",
+          "tags": {
+            "device": "D1",
+            "sensor": "IR_Temperature"
+          },
+          "groupBy": [
+            {
+              "type": "time",
+              "interval": "5m"
+            }
+          ]
+        }
+      ],
+      "title": "Device 1 - IR Temperature Sensor",
+      "type": "graph"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "infinitePan": false,
+        "inlineEditing": false,
+        "panZoom": false
+      },
+      "targets": [
+        {
+          "refId": "B",
+          "measurement": "sensor_data",
+          "tags": {
+            "device": "D1",
+            "sensor": "K_Type_Temperature"
+          },
+          "groupBy": [
+            {
+              "type": "time",
+              "interval": "5m"
+            }
+          ]
+        }
+      ],
+      "title": "Device 1 - K-Type Temperature Sensor",
+      "type": "graph"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 10
+      },
+      "id": 3,
+      "options": {
+        "infinitePan": false,
+        "inlineEditing": false,
+        "panZoom": false
+      },
+      "targets": [
+        {
+          "refId": "C",
+          "measurement": "sensor_data",
+          "tags": {
+            "device": "D1",
+            "sensor": "Current_Sensor_1"
+          },
+          "groupBy": [
+            {
+              "type": "time",
+              "interval": "5m"
+            }
+          ]
+        }
+      ],
+      "title": "Device 1 - Current Sensor 1",
+      "type": "graph"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 10
+      },
+      "id": 4,
+      "options": {
+        "infinitePan": false,
+        "inlineEditing": false,
+        "panZoom": false
+      },
+      "targets": [
+        {
+          "refId": "D",
+          "measurement": "sensor_data",
+          "tags": {
+            "device": "D1",
+            "sensor": "Current_Sensor_2"
+          },
+          "groupBy": [
+            {
+              "type": "time",
+              "interval": "5m"
+            }
+          ]
+        }
+      ],
+      "title": "Device 1 - Current Sensor 2",
+      "type": "graph"
+    }
+  ],
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timezone": "",
+  "title": "Sensors Dashboard for Devices (D1, D2, D3)",
+  "uid": "O4tc_E6Gz",
+  "version": 1,
+  "weekStart": "",
+  "links": [
+    {
+      "title": "Sensgris Logo",
+      "url": "https://i.ibb.co/q3xkZPmv/logo.png",
+      "target": "_blank"
+    },
+    {
+      "title": "DSI Logo",
+      "url": "",
+      "target": "_blank"
+    }
+  ]
+}

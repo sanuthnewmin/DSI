@@ -1,0 +1,37 @@
+{
+  "autoEnabled": true,
+  "dependencies": {
+    "grafanaDependency": ">=11.0.0",
+    "plugins": []
+  },
+  "id": "business-app",
+  "includes": [
+    {
+      "addToNav": true,
+      "defaultNav": true,
+      "icon": "apps",
+      "name": "Plugins",
+      "path": "/a/business-app/",
+      "role": "Viewer",
+      "type": "page"
+    }
+  ],
+  "info": {
+    "author": {
+      "name": "SLT SenseGrid",
+      "url": ""
+    },
+    "description": "A collection of open source plugins created and actively maintained by SenseGrid.",
+    "keywords": ["template"],
+    "links": [],
+    "logos": {
+      "large": "img/logo.svg",
+      "small": "img/logo.svg"
+    },
+    "screenshots": [],
+    "updated": "2025-03-16",
+    "version": "11.5.1"
+  },
+  "name": "SLT SenseGrid",
+  "type": "app"
+}
