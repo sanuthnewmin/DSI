@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root   # ✅ default root password only
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin       
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - ./provisioning1:/etc/grafana/provisioning
+    depends_on:
+      - mysql
+
+
+  web:
+    build: .
+    container_name: apache-php-aiven
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+
+volumes:
+  mysql_data:

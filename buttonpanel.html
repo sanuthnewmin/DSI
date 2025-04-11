@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MQTT.Cool Sensor Panel</title>
+    <script src="https://cdn.jsdelivr.net/npm/mqtt/dist/mqtt.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: white;
+        }
+        .panel {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: 2px solid blue;
+        }
+        .switch-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            border: 1px solid blue;
+            border-radius: 5px;
+        }
+        .switch-label {
+            font-size: 18px;
+            font-weight: bold;
+            color: blue;
+        }
+        .switch {
+            position: relative;
+            width: 60px;
+            height: 30px;
+        }
+        .switch input {
+            display: none;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: white;
+            border: 2px solid blue;
+            border-radius: 34px;
+            transition: 0.4s;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 3px;
+            background-color: blue;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: blue;
+        }
+        input:checked + .slider:before {
+            transform: translateX(28px);
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="panel">
+        <div class="switch-container">
+            <label class="switch-label">Sensor 1</label>
+            <label class="switch">
+                <input type="checkbox" id="sensor1" onchange="toggleSensor(1)">
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div class="switch-container">
+            <label class="switch-label">Sensor 2</label>
+            <label class="switch">
+                <input type="checkbox" id="sensor2" onchange="toggleSensor(2)">
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div class="switch-container">
+            <label class="switch-label">Sensor 3</label>
+            <label class="switch">
+                <input type="checkbox" id="sensor3" onchange="toggleSensor(3)">
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div class="switch-container">
+            <label class="switch-label">Sensor 4</label>
+            <label class="switch">
+                <input type="checkbox" id="sensor4" onchange="toggleSensor(4)">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+
+    <script>
+        // MQTT.Cool Broker Settings
+        const BROKER_URL = 'wss://testclient-cloud.mqtt.cool/';
+        const USERNAME = ''; // If required
+        const PASSWORD = ''; // If required
+
+        // Connect to MQTT.Cool
+        const client = mqtt.connect(BROKER_URL, {
+            username: USERNAME,
+            password: PASSWORD,
+            reconnectPeriod: 1000, // Reconnect every 1 second if disconnected
+        });
+
+        client.on('connect', () => {
+            console.log('Connected to MQTT.Cool Broker');
+        });
+
+        client.on('error', (error) => {
+            console.error('MQTT.Cool Connection Error:', error);
+        });
+
+        function toggleSensor(sensorNumber) {
+            const checkbox = document.getElementById(`sensor${sensorNumber}`);
+            const newState = checkbox.checked ? '1' : '0'; // 1 for ON, 0 for OFF
+            
+            // Publish the state to the corresponding MQTT topic
+            client.publish(`sensor/${sensorNumber}`, newState);
+            console.log(`Sensor ${sensorNumber} is now ${newState}`);
+        }
+    </script>
+</body>
+</html>
